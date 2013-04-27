@@ -7,6 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
  
@@ -17,11 +19,15 @@ import javax.swing.Timer;
 public class Fantasia extends JPanel implements ActionListener {
 
     private Timer timer;
-    private Ship craft;
+    private Ship ship;
     private North location;
     private Alien[] aliens=new Alien[5];
-   
     private Bullet bullet;
+    
+    // initial positions of aliens ship
+    private int[][] pos = { 
+        {2380, 29}, {2500, 159}, {1380, 89},{1000,500},{400,300}
+       };
 
     public Fantasia() {
         
@@ -31,15 +37,17 @@ public class Fantasia extends JPanel implements ActionListener {
 
         //location = new South();
         location = new North();
-        craft = new Ship();
+        ship = new Ship();
+        //bullet= new Bullet();
         
         for (int i =0;i<aliens.length;i++){
             aliens[i] = new Alien();
+            aliens[i].setX(pos[i][0]);
+            aliens[i].setY(pos[i][1]);
         }
         
-        bullet= new Bullet();
 
-        timer = new Timer(1, this);
+        timer = new Timer(5, this);
         timer.start();
     }
 
@@ -49,26 +57,50 @@ public class Fantasia extends JPanel implements ActionListener {
         super.paint(g);
 
         Graphics2D g2d = (Graphics2D)g;
-        g2d.drawImage(location.getImage(), location.getX(), location.getY(), this);
-        g2d.drawImage(craft.getImage(), craft.getX(), craft.getY(), this);
         
+        g2d.drawImage(location.getImage(), location.getX(), location.getY(), this);
+        ImageIcon iiLocation = new ImageIcon(this.getClass().getResource("\\picture\\north1.jpg"));
+        location.setImage(iiLocation);
+        
+        
+        g2d.drawImage(ship.getImage(), ship.getX(), ship.getY(), this);
+        ImageIcon iiShip = new ImageIcon(this.getClass().getResource("\\picture\\craft.png"));
+        ship.setImage(iiShip);
+        
+        ImageIcon iiAlien = new ImageIcon(this.getClass().getResource("\\picture\\alien.png"));
+
         for (int i =0;i<aliens.length;i++){
             g2d.drawImage(aliens[i].getImage(), aliens[i].getX(), aliens[i].getY(), this);
-            aliens[i].setX(i*70);
-            aliens[i].setY(i*70);
-            
+            aliens[i].setImage(iiAlien);
         }
         
-        
-        g2d.drawImage(bullet.getImage(), bullet.getX(), bullet.getY(), this);
-     
+        ImageIcon iiBullet = new ImageIcon(this.getClass().getResource("\\picture\\bullet.png"));
+        ArrayList bullets = ship.getBullets();
+        for (int i = 0; i < bullets.size(); i++) {
+            Bullet b = (Bullet)bullets.get(i);
+            g2d.drawImage(b.getImage(), b.getX(), b.getY(), this);
+            b.setImage(iiBullet);
+        }
+
+        //g2d.drawImage(bullet.getImage(), bullet.getX(), bullet.getY(), this);
        
     }
 
 // calling the method move from class ship to move the craft 
     @Override
     public void actionPerformed(ActionEvent e) {
-        craft.move();
+        ship.move();
+        
+        ArrayList bullets = ship.getBullets();
+        for (int i = 0; i < bullets.size(); i++) {
+            Bullet b = (Bullet)bullets.get(i);
+            b.move();
+        }
+
+        for (int i =0;i<aliens.length;i++){
+            aliens[i].move();
+        }
+        
         repaint();  
     }
 
@@ -81,15 +113,13 @@ public class Fantasia extends JPanel implements ActionListener {
 
         @Override
         public void keyReleased(KeyEvent e) {
-            craft.keyReleased(e);
+            ship.keyReleased(e);
         }
 
         @Override
         public void keyPressed(KeyEvent e) {
-            craft.keyPressed(e);
+            ship.keyPressed(e);
         }
-        
-      
     }
 
 }

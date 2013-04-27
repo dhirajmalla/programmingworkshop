@@ -5,8 +5,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 
 public class Alien {
-    private int dx;
-    private int dy;
+    private int aliensSpeed;
     private int x;
     private int y;
     private Boolean canMove;
@@ -14,22 +13,21 @@ public class Alien {
 
     //Constructor
     public Alien() {
-        ImageIcon ii = new ImageIcon(this.getClass().getResource("\\picture\\alien.png"));
-        image = ii.getImage();
-        x = 50;
-        y = 80;
+        aliensSpeed= 1;
         canMove = true;
     }
 
     //method to move aliens
     public void move() {
         if (canMove){
-            x += dx;
-            y += dy;
+            x -= aliensSpeed;
         }
      }
     
-    
+   public void setImage(ImageIcon li){
+      image=li.getImage();  
+    }
+   
     public void setX(int xValue){
         x=xValue;
     }

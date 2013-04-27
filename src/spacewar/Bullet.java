@@ -6,27 +6,32 @@ import javax.swing.ImageIcon;
 
 
 public class Bullet {
-    private int dx;
-    private int dy;
+    private int speedBullet;
     private int x;
     private int y;
     private Image image;
    
     //Constructor
-    public Bullet() {
-        ImageIcon ii = new ImageIcon(this.getClass().getResource("\\picture\\bullet.png"));
-        image = ii.getImage();
+    public Bullet(int x, int y) {
+
         // initial position of a bullet
-        x = 400;
-        y = 400;
+        this.x = x;
+        this.y = y;
+        speedBullet=2;
+        
     }
 
-    // Method to move bullet
-    public void move () {
-            x += dx;
-            y += dy;
-     }
+     public void setImage(ImageIcon li){
+      image=li.getImage();  
+    }
+   
+    public void setX(int xValue){
+        x=xValue;
+    }
 
+    public void setY(int yValue){
+        y=yValue;
+    }
     public int getX() {
         return x;
     }
@@ -38,4 +43,10 @@ public class Bullet {
     public Image getImage() {
         return image;
     }
+
+    
+    // Method to move bullet
+    public void move () {
+            x += speedBullet;
+     }
 }

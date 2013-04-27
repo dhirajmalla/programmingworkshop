@@ -3,6 +3,7 @@ package spacewar;
 
 import java.awt.Image;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 public class Ship {
@@ -12,17 +13,37 @@ public class Ship {
     private int x;
     private int y;
     private Boolean canMove;
+    private ArrayList bullets;
     private Image image;
 
     public Ship() {
-        ImageIcon ii = new ImageIcon(this.getClass().getResource("\\picture\\craft.png"));
-        image = ii.getImage();
-        x = 100;
-        y = 200;
+        x=10;
+        y=400;
         canMove = true;
+        bullets = new ArrayList();
     }
 
+    public void setImage(ImageIcon li){
+      image=li.getImage();  
+    }
+    
+    
+    public int getX() {
+        return x;
+    }
 
+    public int getY() {
+        return y;
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public ArrayList getBullets() {
+        return bullets;
+    }
+    
     public void move() {
         if (canMove){
             if (x>1000){
@@ -46,20 +67,16 @@ public class Ship {
         }
      }
 
-    public int getX() {
-        return x;
+    public void fire() {
+        bullets.add(new Bullet(x+this.image.getWidth(null) , y+this.image.getHeight(null)/2));
     }
-
-    public int getY() {
-        return y;
-    }
-
-    public Image getImage() {
-        return image;
-    }
-
+    
+    
     public void keyPressed(KeyEvent e) {       
 
+        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+            fire();
+        }
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             dx = -1;
         }

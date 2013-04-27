@@ -19,10 +19,12 @@ public class North {
     private Image image;
 
     public North() {
-        ImageIcon ii = new ImageIcon(this.getClass().getResource("\\picture\\north1.jpg"));
-        image = ii.getImage();
         x = 0;
         y = 0;
+    }
+
+  public void setImage(ImageIcon li){
+      image=li.getImage();  
     }
 
   public int getX() {
