@@ -10,7 +10,8 @@ import javax.swing.JPanel;
 
 /**
  * 
- * creates frame for game and sets its properties 
+ * @author Team  Dhiraj  and Ioana
+ * @version 1.0
  */
 
 public class GameLoader extends JFrame {
@@ -18,6 +19,7 @@ public class GameLoader extends JFrame {
     public GameLoader(){
         // creates the instance of Fantasy.java
         add(new Fantasia());
+       
        
         setTitle("Fantasia");           
         setLocationRelativeTo(null);       
@@ -47,7 +49,8 @@ public class GameLoader extends JFrame {
         button.setBounds(630, 230, 100, 30);
         button.addActionListener (new Action());
         
-        JLabel mainTitle = new JLabel("FANTASIA");
+
+    JLabel mainTitle = new JLabel("FANTASIA");
         mainTitle.setFont(new Font("Arial",20 , 38));
         mainTitle.setBounds(600,30, 415, 230);
         panel.setSize(250, 250);
@@ -57,8 +60,7 @@ public class GameLoader extends JFrame {
                 + "\n Esc Key to exit game");
         menu.setFont(new Font("Arial",2 , 14));
         menu.setBounds(400,300, 1000, 130);
-        panel.add(menu);
-      
+        panel.add(menu);      
     }
     
     
