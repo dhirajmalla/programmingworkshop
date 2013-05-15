@@ -1,4 +1,3 @@
-
 package spacewar;
 
 /**
@@ -7,5 +6,6 @@ package spacewar;
  * @version 1.0
  */
 public interface World {
+    
     
 }
