@@ -10,8 +10,7 @@ import org.junit.Test;
  */
 public class CollisionTest {
     
-  
-    /**
+      /**
      * Test of checkCollisionShipAlien method, of class Collision.
      */
     @Test
