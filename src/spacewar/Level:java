@@ -1,0 +1,19 @@
+
+package spacewar;
+
+import java.awt.Image;
+
+/**
+ *  Interface for different level
+ * @author Team  Dhiraj  and Ioana
+ * @version 1.0
+ */
+public interface Level {
+    int getX();
+    
+    int getY();
+    
+    Image getImage();
+    
+     void move();
+}
