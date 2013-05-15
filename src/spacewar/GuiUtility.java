@@ -1,4 +1,3 @@
-
 package spacewar;
 
 import java.util.ArrayList;
@@ -58,5 +57,4 @@ public class GuiUtility {
         endDisplay.setImage(iiStartGame);
 
     }
-    
 }
