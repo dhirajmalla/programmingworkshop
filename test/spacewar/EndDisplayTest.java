@@ -14,8 +14,7 @@ public class EndDisplayTest {
     
     public EndDisplayTest() {
     }
-    
-    
+        
     /**
      * Test of setImage method, of class EndDisplay.
      */
