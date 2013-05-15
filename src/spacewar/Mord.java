@@ -1,4 +1,3 @@
-
 package spacewar;
 
 import java.awt.Image;
@@ -24,7 +23,6 @@ public class Mord implements Level {
         xImage2=8000;
         yImage2=0;
         canMove=true;
-        
     }
 
   public void setImage(ImageIcon li){
