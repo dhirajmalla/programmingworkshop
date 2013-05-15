@@ -25,4 +25,5 @@ public interface Player {
     Rectangle getBounds();
      
      void move();
+     
 }
