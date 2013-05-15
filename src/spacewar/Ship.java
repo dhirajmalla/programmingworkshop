@@ -7,7 +7,13 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
-public class Ship {
+/**
+ * This is  Ship Class 
+ * @author Team  Dhiraj Jonna
+ * @version  1.0
+ */
+
+public class Ship implements Player{
 
     private int dx;
     private int dy;
@@ -20,6 +26,9 @@ public class Ship {
     private ArrayList bullets;
     private Image image;
 
+    /**
+     * 
+     */
     public Ship() {
         x=10;
         y=400;
@@ -46,18 +55,22 @@ public class Ship {
         this.energyLevel  = energyLevel;
     }
     
+    @Override
     public int getX() {
         return x;
     }
 
+    @Override
     public int getY() {
         return y;
     }
     
+  
     public int getEnergyLevel() {
         return energyLevel;
     }
     
+    @Override
     public Image getImage() {
         return image;
     }
@@ -66,13 +79,16 @@ public class Ship {
         return bullets;
     }
 
+    @Override
     public boolean isVisible() {
         return visible;
     }
+    @Override
     public Rectangle getBounds() {
         return new Rectangle(x, y, 40,20);
     } 
     
+    @Override
     public void move() {
         if (canMove){
             if (x>1350){
@@ -99,6 +115,7 @@ public class Ship {
     public void fire() {
         if (energyLevel==100){
             bullets.add(new Bullet(x+this.image.getWidth(null) , y+this.image.getHeight(null)/2));
+            Sound.SHOOT.play(); 
         }
     }
     
