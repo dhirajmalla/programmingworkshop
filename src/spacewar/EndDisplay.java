@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package spacewar;
 
 import java.awt.Image;
@@ -9,8 +6,9 @@ import java.awt.Rectangle;
 import javax.swing.ImageIcon;
 
 /**
- *
- * @author Dhiraj
+ * Conclusion display class
+ * @author Team  Dhiraj  and Ioana
+ * @version 1.0
  */
 public class EndDisplay {
     private int x;
@@ -18,10 +16,17 @@ public class EndDisplay {
     private boolean visible;
     private Image image;
    
+    /**
+     * The Constructor 
+     * @param x
+     *          specified the x position 
+     * @param y 
+     *          specified the y position
+     */
     public EndDisplay(int x, int y){
        this.x=x;
-        this.y=y;
-        visible=false;
+       this.y=y;
+       visible=false;
         
     }
     
