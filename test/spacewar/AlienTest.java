@@ -1,65 +1,65 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package spacewar;
 
 import java.awt.Image;
-import org.junit.After;
-import org.junit.AfterClass;
+import java.awt.Rectangle;
+import javax.swing.ImageIcon;
 import static org.junit.Assert.*;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
  *
- * @author ioanajuja
+ * @author Team Dhiraj and Ioana
  */
 public class AlienTest {
     
     public AlienTest() {
     }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
+
+    /**
+     * Test of setImage method, of class Alien.
+     */
+    @Test
+    public void testSetImage() {
+        System.out.println("setImage");
+        ImageIcon li =  new ImageIcon(this.getClass().getResource("\\picture\\alien1.png"));
+        Alien instance =  new Alien (1000,35,1,2,0);
+        instance.setImage(li);
+        
+        Image expResult = li.getImage();
+        Image result = instance.getImage();
+        assertEquals(expResult, result);
     }
 
     /**
-     * Test of move method, of class Alien.
+     * Test of setVisible method, of class Alien.
      */
     @Test
-    public void testMove() {
-        System.out.println("move");
-        Alien instance = new Alien();
-        instance.move();
-        // TODO review the generated test code and remove the default call to fail.
-       
+    public void testSetVisible() {
+        System.out.println("setVisible");
+        boolean visible = false;
+        Alien instance =  new Alien (1000,35,1,2,0);
+        instance.setVisible(visible);
+        
+        boolean expResult = false;
+        boolean result = instance.isVisible();
+        assertEquals(expResult, result);   
+        
     }
 
+    
     /**
      * Test of setX method, of class Alien.
      */
     @Test
     public void testSetX() {
         System.out.println("setX");
-        int xValue = 0;
-        Alien instance = new Alien();
+        int xValue=1000;
+        Alien instance = new Alien (1000,35,1,2,0);
         instance.setX(xValue);
-        // TODO review the generated test code and remove the default call to fail.
-       
+        
+        int expResult=1000;
+        int result = instance.getX();
+        assertEquals(expResult, result);
     }
 
     /**
@@ -69,10 +69,12 @@ public class AlienTest {
     public void testSetY() {
         System.out.println("setY");
         int yValue = 0;
-        Alien instance = new Alien();
+        Alien instance = new Alien (1000,35,1,2,0);
         instance.setY(yValue);
-        // TODO review the generated test code and remove the default call to fail.
         
+        int expResult=35;
+        int result = instance.getY();
+        assertEquals(expResult, result);
     }
 
     /**
@@ -81,12 +83,11 @@ public class AlienTest {
     @Test
     public void testGetX() {
         System.out.println("getX");
-        Alien instance = new Alien();
-        int expResult = instance.getX();
+        Alien instance = new Alien (1000,35,1,2,0);
+        int expResult = 1000;
         int result = instance.getX();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        
+
     }
 
     /**
@@ -95,12 +96,37 @@ public class AlienTest {
     @Test
     public void testGetY() {
         System.out.println("getY");
-        Alien instance = new Alien();
-        int expResult = instance.getY();
+        Alien instance =new Alien (1000,35,1,2,0);
+        int expResult = 35;
         int result = instance.getY();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        
+
+    }
+
+    /**
+     * Test of getAliensType method, of class Alien.
+     */
+    @Test
+    public void testGetAliensType() {
+        System.out.println("getAliensType");
+        Alien instance = new Alien (1000,35,1,2,0);
+        int expResult = 1;
+        int result = instance.getAliensType();
+        assertEquals(expResult, result);
+
+    }
+
+    /**
+     * Test of isVisible method, of class Alien.
+     */
+    @Test
+    public void testIsVisible() {
+        System.out.println("isVisible");
+        Alien instance = new Alien (1000,35,1,2,0);
+        boolean expResult = true;
+        boolean result = instance.isVisible();
+        assertEquals(expResult, result);
+
     }
 
     /**
@@ -109,11 +135,36 @@ public class AlienTest {
     @Test
     public void testGetImage() {
         System.out.println("getImage");
-        Alien instance = new Alien();
-        Image expResult = instance.getImage();
+        Alien instance =new Alien (1000,35,1,2,0);
+         ImageIcon li =  new ImageIcon(this.getClass().getResource("\\picture\\alien1.png"));
+        instance.setImage(li);
+
+        Image expResult = li.getImage();
         Image result = instance.getImage();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-       
+
+    }
+
+    /**
+     * Test of getBounds method, of class Alien.
+     */
+    @Test
+    public void testGetBounds() {
+        System.out.println("getBounds");
+        Alien instance = new Alien (1000,35,1,2,0);
+        Rectangle expResult = new Rectangle(1000, 35, 40,20);
+        Rectangle result = instance.getBounds();
+        assertEquals(expResult, result);
+
+    }
+
+    /**
+     * Test of move method, of class Alien.
+     */
+    @Test
+    public void testMove() {
+        System.out.println("move");
+        Alien instance = new Alien (1000,35,1,2,0);
+        instance.move();
     }
 }
