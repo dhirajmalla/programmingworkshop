@@ -1,4 +1,3 @@
-
 package spacewar;
 
 import java.awt.Image;
@@ -16,4 +15,5 @@ public interface Level {
     Image getImage();
     
      void move();
+     
 }
