@@ -15,7 +15,6 @@ public class Collision {
             returnValue= false;
     }
    
-    
     /**
      * This checks the collision between ship and alien
      * returns true if the collision occurs between them
